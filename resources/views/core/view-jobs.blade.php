@@ -8,6 +8,6 @@
         <h3>No of Vacancy: {{$job->vacancy}}</h3>
             <h1>Registration Charge: {{$job->reg_fee}}</h1>
 
-                <a href="" class="btn btn-success btn-lg">Apply Now</a>
+                <a href="{{route('payment.pay', ['id'=>$job->id])}}" class="btn btn-success btn-lg">Apply Now</a>
         </tr>
 @endsection
