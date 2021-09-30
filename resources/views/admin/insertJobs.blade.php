@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Title</label>
                         <div class="col-sm-6">
-                            <input type="text" name="job_title" class="form-control">
+                            <input type="text" name="job_title" class="form-control" value="{{old('title')}}">
                         </div>
                     </div>
                     <div class="form-group">

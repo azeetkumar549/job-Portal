@@ -3,11 +3,18 @@
 
 @section('content')
 <section id="main-content">
+
+
 	<section class="wrapper">
 		<div class="table-agile-info">
  <div class="panel panel-default">
     <div class="panel-heading">
      Basic table
+     @if (session('msg'))
+        <div class="alert bg-success text-white">
+            {{ session('msg') }}
+        </div>
+    @endif
     </div>
     <div>
       <table class="table" ui-jq="footable" ui-options='{
@@ -65,7 +72,7 @@
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>© 2021 JobPortal. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 			</div>
 		  </div>
   <!-- / footer -->

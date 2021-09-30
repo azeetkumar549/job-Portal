@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class JobController extends Controller
 {
@@ -17,7 +18,7 @@ class JobController extends Controller
     }
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $data = Validator::make($request->all(),[
             'job_title' => 'required',
             'application_start' => 'required',
             'last_date' => 'required',
@@ -29,9 +30,16 @@ class JobController extends Controller
             'job_type' => 'required',
             'reg_fee' => 'required'
         ]);
-        $data = $data + ["status"=> 1];
+
+        if($data->fails()){
+            return redirect("admin/jobs/create")->withErrors($data)->withInput();
+        }
+
+        $data = $data->validated() + ["status"=> 1];
         Job::create($data);
-        return redirect()->route('jobs.index');
+        return redirect()->action([HomeController::class,"home"]);
+        // return redirect()->away("http://www.google.com");
+        // return redirect()->route('jobs.index')->with("msg","data inserted successfully");
 
     }
     public function show(job $job)
